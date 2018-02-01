@@ -1,0 +1,32 @@
+{
+  "name": "ui-google-map",
+  "version": "0.0.1",
+  "description": "Google Maps Webcomponent",
+  "main": "build/gmap.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasmith79/ui-google-map.git"
+  },
+  "keywords": [
+    "webcomponent",
+    "google-maps"
+  ],
+  "author": "jasmith79@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jasmith79/ui-google-map/issues"
+  },
+  "homepage": "https://github.com/jasmith79/ui-google-map#readme",
+  "dependencies": {
+    "ui-components-lite": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-minify": "^0.3.0",
+    "babel-preset-env": "^1.6.1",
+    "jasmine": "^2.9.0"
+  }
+}
