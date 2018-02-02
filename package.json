@@ -20,13 +20,13 @@
     "url": "https://github.com/jasmith79/ui-google-map/issues"
   },
   "homepage": "https://github.com/jasmith79/ui-google-map#readme",
-  "dependencies": {
-    "ui-components-lite": "^2.0.0"
-  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-minify": "^0.3.0",
     "babel-preset-env": "^1.6.1",
     "jasmine": "^2.9.0"
+  },
+  "dependencies": {
+    "ui-components-lite": "^2.0.1"
   }
 }
