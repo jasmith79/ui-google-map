@@ -3,7 +3,7 @@ import {
   defineUIComponent,
   document,
   global
-} from '../node_modules/ui-components-lite/utils/ui-component-base.js';
+} from '../../ui-components-lite/src/utils/ui-component-base.js';
 
 const tooLongMessage = `Sorry but google maps is taking longer than expected to load.
   If this message does not disappear in the next couple of seconds please refresh the page.`;

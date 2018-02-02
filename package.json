@@ -1,6 +1,6 @@
 {
   "name": "ui-google-map",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Google Maps Webcomponent",
   "main": "build/gmap.js",
   "scripts": {
@@ -27,6 +27,6 @@
     "jasmine": "^2.9.0"
   },
   "dependencies": {
-    "ui-components-lite": "^2.0.1"
+    "ui-components-lite": "^2.0.2"
   }
 }
