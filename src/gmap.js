@@ -13,6 +13,8 @@ const failMessage = `Oops! Looks like Google Maps failed to load. Please refresh
 const warnTimeout = 8000;
 const failTimeout = 15000;
 
+let mapsLoaded = false;
+
 export const mapsAPILoaded = (() => {
   return new Promise((res, rej) => {
     const warnHandle = global.setTimeout(() => {
@@ -73,15 +75,6 @@ export const GoogleMap = defineUIComponent({
       this._mapContainer = null;
       this._mapObj = null;
       this._center = null;
-      (() => {
-        const API_KEY = this.attr('api-key');
-        if (!API_KEY || API_KEY === 'YOUR_API_KEY_HERE') throw new Error('No google maps API key!');
-        const mapsAPI = document.createElement('script');
-        mapsAPI.src = 'https://maps.googleapis.com/maps/api/js?' +
-          `key=${API_KEY}&callback=_resolveMapsLoader`;
-
-        document.head.appendChild(mapsAPI);
-      })();
     }
 
     get map () {
@@ -103,6 +96,17 @@ export const GoogleMap = defineUIComponent({
 
     init () {
       super.init();
+
+      if (!mapsLoaded) {
+        mapsLoaded = true;
+        const API_KEY = this.attr('api-key');
+        if (!API_KEY || API_KEY === 'YOUR_API_KEY_HERE') throw new Error('No google maps API key!');
+        const mapsAPI = document.createElement('script');
+        mapsAPI.src = 'https://maps.googleapis.com/maps/api/js?' +
+          `key=${API_KEY}&callback=_resolveMapsLoader`;
+
+        document.head.appendChild(mapsAPI);
+      }
 
       mapsAPILoaded.then(_ => {
         this._mapContainer = this.selectInternalElement('#map-container');

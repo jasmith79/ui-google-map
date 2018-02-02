@@ -1,4 +1,3 @@
-
 SHELL := /bin/bash
 PATH  := node_modules/.bin:$(PATH)
 
@@ -9,7 +8,7 @@ clean:
 
 build/gmap.js: src/gmap.js
 	@mkdir -p $(@D)
-	babel $< --presets env -o $@
+	babel $< -o $@
 
 build/gmap.min.js: build/gmap.js
 	@mkdir -p $(@D)
