@@ -8,7 +8,7 @@ clean:
 
 build/gmap.js: src/gmap.js
 	@mkdir -p $(@D)
-	cat $< | sed "s#../node_modules#../../#" > $@
+	cat $< | sed "s#../node_modules/#../../#" > $@
 
 build/gmap.es5.js: build/gmap.js
 	@mkdir -p $(@D)

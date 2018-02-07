@@ -1,8 +1,8 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', '../..//ui-components-lite/src/utils/ui-component-base.js'], factory);
+    define(['exports', '../../ui-components-lite/src/utils/ui-component-base.js'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('../..//ui-components-lite/src/utils/ui-component-base.js'));
+    factory(exports, require('../../ui-components-lite/src/utils/ui-component-base.js'));
   } else {
     var mod = {
       exports: {}
