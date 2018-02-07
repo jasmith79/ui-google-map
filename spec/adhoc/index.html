@@ -11,10 +11,25 @@ html, body {
   margin: 0;
 }
 
+#container, ui-google-map {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
+
 </style>
 </head>
 <body>
-  <script src="../../src/gmap.js"></script>
-  <ui-google-map api-key="YOUR_API_KEY_HERE"></ui-google-map>
- </body>
+  <script type="module">
+    import { GoogleMap } from '../../src/gmap.js';
+    import API_KEY from '../support/apikey.js'; // you'll need to supply the API key yourself
+
+    const div = document.createElement('div');
+    div.id = 'container';
+    div.innerHTML += `
+      <ui-google-map api-key="${API_KEY}"></ui-google-map>
+    `;
+    document.body.appendChild(div);
+  </script>
+</body>
 </html>
