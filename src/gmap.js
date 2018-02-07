@@ -13,8 +13,8 @@ const failMessage = `Oops! Looks like Google Maps failed to load. Please refresh
 const warnTimeout = 8000;
 const failTimeout = 15000;
 
-// One of the most idiotic things I've ever seen, and for JavaScript, that's really saying
-// something.
+// event.key is one of the most idiotic things I've ever seen, and for JavaScript, that's really
+// saying something.
 const KEYMAP = key => {
   switch (key) {
     case 'ArrowUp':
