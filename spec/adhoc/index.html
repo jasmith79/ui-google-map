@@ -17,9 +17,15 @@ html, body {
   padding: 0;
 }
 
+ui-dialog {
+  position: fixed;
+  top: 10%;
+  left: 10%;
+}
 </style>
 </head>
 <body>
+  <script src="../../node_modules/ui-components-lite/build/loader.min.js"></script>
   <script type="module">
     import { GoogleMap } from '../../src/gmap.js';
     import API_KEY from '../support/apikey.js'; // you'll need to supply the API key yourself

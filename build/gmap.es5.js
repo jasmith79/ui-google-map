@@ -178,6 +178,7 @@
         _this._center = null;
         _this._keydownHandler = null;
         _this._API_KEY = apikey;
+        _this._isListeningForKeypress = false;
         return _this;
       }
 
@@ -205,13 +206,21 @@
       }, {
         key: '_addKeyboardHandler',
         value: function _addKeyboardHandler() {
-          _uiComponentBase.document.addEventListener('keydown', this._keydownHandler);
+          if (!this._isListeningForKeypress) {
+            this._isListeningForKeypress = true;
+            _uiComponentBase.document.addEventListener('keydown', this._keydownHandler);
+          }
+
           return this;
         }
       }, {
         key: '_removeKeyboardHandler',
         value: function _removeKeyboardHandler() {
-          _uiComponentBase.document.removeEventListener('keydown', this._keydownHandler);
+          if (this._isListeningForKeypress) {
+            this._isListeningForKeypress = false;
+            _uiComponentBase.document.removeEventListener('keydown', this._keydownHandler);
+          }
+
           return this;
         }
       }, {
@@ -238,7 +247,8 @@
               var options = {
                 zoom: 11,
                 center: new _uiComponentBase.global.google.maps.LatLng(39.75, -86.16),
-                mapTypeId: google.maps.MapTypeId.ROADMAP
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                keyboardShortcuts: false // workaround for bug https://issuetracker.google.com/issues/73644075
               };
 
               if (_this2.mapType && _this2.mapType.toUpperCase() in _uiComponentBase.global.google.maps.MapTypeId) {
@@ -272,6 +282,7 @@
               });
 
               _this2._mapObj.addListener('dragend', function (e) {
+                console.log('dragend');
                 _this2._center = _this2.map.getCenter();
               });
 
@@ -315,10 +326,12 @@
               };
 
               _this2.on('mouseenter', function (e) {
+                console.log('mouseenter');
                 _this2._addKeyboardHandler();
               });
 
               _this2.on('mouseleave', function (e) {
+                console.log('mouseleave');
                 _this2._removeKeyboardHandler();
               });
 

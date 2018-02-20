@@ -110,6 +110,7 @@ export const GoogleMap = defineUIComponent({
       this._center = null;
       this._keydownHandler = null;
       this._API_KEY = apikey;
+      this._isListeningForKeypress = false;
     }
 
     get map () {
@@ -130,12 +131,20 @@ export const GoogleMap = defineUIComponent({
     }
 
     _addKeyboardHandler () {
-      document.addEventListener('keydown', this._keydownHandler);
+      if (!this._isListeningForKeypress) {
+        this._isListeningForKeypress = true;
+        document.addEventListener('keydown', this._keydownHandler);
+      }
+
       return this;
     }
 
     _removeKeyboardHandler () {
-      document.removeEventListener('keydown', this._keydownHandler);
+      if (this._isListeningForKeypress) {
+        this._isListeningForKeypress = false;
+        document.removeEventListener('keydown', this._keydownHandler);
+      }
+
       return this;
     }
 
@@ -160,7 +169,8 @@ export const GoogleMap = defineUIComponent({
           const options = {
             zoom: 11,
             center: new global.google.maps.LatLng(39.75, -86.16),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            keyboardShortcuts: false, // workaround for bug https://issuetracker.google.com/issues/73644075
           };
 
           if (this.mapType && this.mapType.toUpperCase() in global.google.maps.MapTypeId) {
@@ -194,6 +204,7 @@ export const GoogleMap = defineUIComponent({
           });
 
           this._mapObj.addListener('dragend', e => {
+            console.log('dragend');
             this._center = this.map.getCenter();
           });
 
@@ -231,10 +242,12 @@ export const GoogleMap = defineUIComponent({
           };
 
           this.on('mouseenter', e => {
+            console.log('mouseenter');
             this._addKeyboardHandler();
           });
 
           this.on('mouseleave', e => {
+            console.log('mouseleave');
             this._removeKeyboardHandler();
           });
 
