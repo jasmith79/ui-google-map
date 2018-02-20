@@ -1,6 +1,6 @@
 {
   "name": "ui-google-map",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Google Maps Webcomponent",
   "main": "build/gmap.js",
   "scripts": {
