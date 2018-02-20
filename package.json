@@ -28,6 +28,6 @@
     "jasmine": "^2.9.0"
   },
   "dependencies": {
-    "ui-components-lite": "^2.0.5"
+    "ui-components-lite": "^2.3.4"
   }
 }
